@@ -106,7 +106,7 @@ DAMPE-PSD探测单元模块大动态范围读出方案的实验验证\\[-5mm]}
 
 PSD是一个由82个探测单元模块组成的平面阵列探测器，其有效探测面积为$820mm\times820mm$。
 每个探测单元模块由一根$884mm\times28mm\times10mm$的塑料闪烁体单元条(Eljen EJ-200\cite{ej200})和耦合在单元条两端的两支光电倍增管(Hamamatsu R4443\cite{r4443})组成。
-带电粒子在塑闪单元条中的沉积能量首先转化为光信号。光子在单元条中经过反射、折射和衰减，最终被两端的光电倍增管收集并转化为电信号，输出到专门的前端电子学模块中进行后续处理。
+带电粒子在塑闪单元条中的沉积能量首先转化为光信号。光子在单元条中经过反射、折射和衰减，最终被两端的光电倍增管收集并转化为电信号进行后续处理。
 
 相对论能区($\beta\gamma=1\sim1000$)的带电粒子和重离子在$10mm$塑闪材料中的能量沉积主要来自电离能损，其大小近似正比于$Z^2$。
 因此，不同种类的粒子在PSD中的沉积能量相差巨大，可以根据能损大小对其电荷数进行测量。
@@ -121,9 +121,18 @@ PSD选择了双打拿极引出的方式来增大读出电路的动态范围，即同时引出R4443的打拿极5(dy
 另外，由于实验只能得到PSD塑闪单元条在中能轻核区的能量响应，本文基于BTV(Birks-Tarle-Voltz)模型\cite{btv}将实验结果外推到了相对论重核区，并得到了PSD探测单元模块输出信号幅度的动态范围。
 
 \section{实验设备与实验条件}
-实验在兰州重离子加速器国家实验室(HIRFL-CSR)上的外靶终端进行。
+实验在兰州重离子加速器国家实验室(HIRFL-CSR)上的外靶终端(ETF)进行，探测器布局如图~1所示。
 待测的PSD探测单元模块放置在RIBLL2束线出口处，其长度方向与束流出射方向成90\degree，使得束流垂直穿过单元条厚度。
-该单元模块使用与PSD正样飞行件完全一样的材料、器件和电路设计，因此测试结果可以直接被参考使用。
+探测单元的信号输出到PSD的专用前端电子学模块中进行处理。
+该模块使用ASIC芯片VA160\cite{va160}进行电荷测量，并结合14位的ADC进行模数转换\cite{fee}。
+实验中所用的塑闪单元条、PMT以及前端电子学与PSD正样飞行件完全一致，测试结果可以直接被参考使用
+
+\begin{center}
+	\includegraphics[width=75mm]{ribll2.eps}\\
+	\xiaowu\song 图~1\begin{minipage}[t]{75mm} \quad 
+		RIBLL2束线以及PSD探测单元模块在外靶终端的实验布局\\[-1mm]\wuhao
+	\end{minipage}
+\end{center}
 
 来自CSR主环的稳定主束在RIBLL2的入口处轰击初级Be靶，通过弹核碎裂反应产生不同种类的次级离子。
 具有相近A/Z比的次级离子经过RIBLL2的分离、纯化，最终被传输到外靶终端进行实验。
@@ -131,34 +140,27 @@ PSD选择了双打拿极引出的方式来增大读出电路的动态范围，即同时引出R4443的打拿极5(dy
 为了得到Z$\leq$8的所有重离子类型，测试使用了三种不同的束流配置，分别是利用350MeV/u的$^{16}O$主束产生$^{15}N$、$^{13}C$、$^{11}B$、$^{9}Be$和$^{7}Li$，利用265MeV/u的$^{16}O$主束产生$^{3}He$以及265MeV/u的$^{16}O$主束自身。
 
 RIBLL2束线上同时装配有一组塑闪飞行时间探测器和一个硅片能损探测器，可以使用TOF-$\Delta$E方法对次级离子种类进行鉴别。
-图~1给出了350MeV/u的$^{16}O$主束条件下次级离子的TOF-$\Delta$E关联图，从图中可以清晰地分辨出几种不同的次级离子。
+图~2给出了350MeV/u的$^{16}O$主束条件下次级离子的TOF-$\Delta$E关联图，从图中可以清晰地分辨出几种不同的次级离子。
 数据分析时，我们首先根据TOF-$\Delta$E关联图挑选出同种核素的入射事件，然后考察PSD探测单元模块对该单一核素的能量响应。
 
 \begin{center}
 	\includegraphics[width=75mm]{TofVsE.eps}\\
-	\xiaowu\song 图~1\begin{minipage}[t]{75mm} \quad 
+	\xiaowu\song 图~2\begin{minipage}[t]{75mm} \quad 
 		350MeV/u$^{16}O$主束产生的次级离子TOF-$\Delta$E关联图\\[-1mm]\wuhao
 	\end{minipage}
 \end{center}
 
 % \section{测量结果}
 \section{单元条中心的重离子响应}
-实验中发现，$Z>2$的重离子已经使dy8信号饱和，因此dy5信号被用来研究PSD探测单元模块对所有入射离子的能量响应，如图~2所示。
+实验中发现，$Z>2$的重离子已经使dy8信号饱和，因此dy5信号被用来研究PSD探测单元模块对所有入射离子的能量响应，如图~3所示。
 可以看到，不同种类的重离子可以被清晰地分辨出来。
 表~1给出了对各个峰位高斯拟合得到的中心值($L$，代表相对光产额)和展宽值($\Sigma$，代表能量分辨)。
 
-\begin{center}
-	\includegraphics[width=75mm]{adcVSz.eps}\\
-	\xiaowu\song 图~2\begin{minipage}[t]{75mm} \quad 单元条一端得到的原始能谱。横轴为从dy5通道的ADC道数值\\[-1mm]\wuhao
-	\end{minipage}
-\end{center}
-		
 相对论重离子($\beta\gamma=1\sim1000$)与实验使用的中能重离子在相同材料中的能量损失并不一致，因此上述的测量结果需要修正。
 表~1列出了LISE\cite{lise}计算得到的不同重离子在10mm塑闪材料中的沉积能量，其中$\Delta$$E_{exp}$表示本次实验使用的次级束离子，$\Delta$$E_{mip}$表示对应的$\beta\gamma=3$的MIP重离子(Minimum Ionizing Particle，最小电离粒子)。
 由于相对论重离子的电离能损与速度的关联性较小\cite{pdg}，后面的分析中使用MIP重离子来代表相对论能区的能量响应。
 对于同一种重离子来说，在沉积能量相差不大的条件下，其在塑闪中的光产额近似与沉积能量大小成正比。
 据此，可以推得PSD探测单元条模块对相对论重离子的能量响应中心值为$L\frac{\Delta E_{mip}}{\Delta E_{exp}}$。
-
 \end{multicols}
 \begin{center}
 	\bgliu
@@ -189,42 +191,46 @@ RIBLL2束线上同时装配有一组塑闪飞行时间探测器和一个硅片能损探测器，可以使用TOF-$\
 \song\wuhao
 
 \begin{center}
-	\includegraphics[width=75mm]{dynamicRange.eps}\\
-	\xiaowu\song 图~3\begin{minipage}[t]{75mm} \quad 将PSD探测单元模块的能量响应外推至Z=20\\[-1mm]\wuhao
+	\includegraphics[width=75mm]{adcVSz.eps}\\
+	\xiaowu\song 图~3\begin{minipage}[t]{75mm} \quad 单元条一端得到的原始能谱。横轴为从dy5通道的ADC道数值\\[-1mm]\wuhao
 	\end{minipage}
 \end{center}
-
-
+			
 基于上述轻核区的实验结果，使用BTV(Birks-Tarle-Voltz)模型\cite{calet,zhou,btv}外推，可以得到PSD单元条在重核区的能量响应。
 BTV模型也被称为core-halo模型，该模型认为重离子在闪烁体中的光产额由距离入射迳迹较近的内核(core)和较远的晕(halo)两个区域构成。
 内核区域的能损密度高，猝灭效应影响大，其光产额与沉积能量的关系可以用Birks定律\cite{birks}描述；晕区域主要由少量高能$\delta$电子组成，能损密度低，其光产额与沉积能量大小成正比。
-公式(1)是BTV模型的参数化表示，其中$\frac{dL}{dx}$是单位路径的闪烁光输出，$f_h$是晕区域内沉积能量占总沉积能量的比例，$B_S$代表猝灭效应的强度，$A$是全局归一化参数，$Z$是入射离子的电荷数。
-$Z^2$项来自于相对论重离子的单位路径能损$\frac{dE}{dx}=\alpha Z^2$，对于塑闪材料来说，其中的$\alpha\approx 2MeVg^{-1}cm^2$。
-图~3是使用公式(1)对轻核区实验数据的拟合结果，其中横轴为电荷数Z，纵轴为dy5通道的ADC道数值。
-可以看到，数据点与理论模型符合得比较好。
-根据拟合结果，可以计算出当$Z=20$时，dy5通道的响应中心值为2940道。
-
+公式(1)是BTV模型的参数化表示，
 \begin{equation}
 \frac{dL}{dx}=\dfrac{A(1-f_h)\alpha Z^2}{1 + B_S(1-f_h)\alpha Z^2} + Af_h\alpha Z^2 ~,
 \end{equation}
-
-	
+其中$\frac{dL}{dx}$是单位路径的闪烁光输出，$f_h$是晕区域内沉积能量占总沉积能量的比例，$B_S$代表猝灭效应的强度，$A$是全局归一化参数，$Z$是入射离子的电荷数。
+$Z^2$项来自于相对论重离子的单位路径能损$\frac{dE}{dx}=\alpha Z^2$，对于塑闪材料来说，其中的$\alpha\approx 2MeVg^{-1}cm^2$。
+图~4是使用公式(1)对轻核区实验数据的拟合结果，其中横轴为电荷数Z，纵轴为dy5通道的ADC道数值。
+可以看到，数据点与理论模型符合得比较好。
+根据拟合结果，可以计算出当$Z=20$时，dy5通道的响应中心值为2940道。
 
 \begin{center}
-	\includegraphics[width=75mm]{attenuation_length.eps}\\
-	\xiaowu\song 图~4\begin{minipage}[t]{75mm} \quad 单元条一端测得的光输出量与击中位置的关系。横轴为以单元条中心为零点的击中位置坐标，纵轴为相对于单元条中心归一化的光输出量。\\[-1mm]\wuhao
+	\includegraphics[width=75mm]{dynamicRange.eps}\\
+	\xiaowu\song 图~4\begin{minipage}[t]{75mm} \quad 将PSD探测单元模块的能量响应外推至Z=20\\[-1mm]\wuhao
 	\end{minipage}
 \end{center}
 
+
 \section{衰减长度的测量结果}
 通过移动PSD探测单元模块的位置，使得束流中心依次对准单元条上-310mm，-210mm，0mm，210mm以及310mm五个位置点，可以对单元条的光衰减长度进行测量。
-由于到达终端的次级束中包含多种重离子成分，此次实验同时得到了$^{15}N$、$^{13}C$、$^{11}B$三种核素的测量结果，如图~4所示。
+由于到达终端的次级束中包含多种重离子成分，此次实验同时得到了$^{15}N$、$^{13}C$、$^{11}B$三种核素的测量结果，如图~5所示。
 为了便于直接比较不同核素的测量结果，图中各位置点的光输出值都分别归一到了中心位置处。
 可以看到，归一化后的三组数据点高度重合。
 这说明，不同入射重离子测得的光衰减效应是完全一致的。
 
 使用指数衰减函数对上述所有实验点进行拟合，可以得到单元条的衰减长度为927mm。
 据此，可以计算得到其最近端与中心位置处的信号幅度比值为1.64，最近端与最远端的信号幅度比值为2.59。
+
+\begin{center}
+	\includegraphics[width=75mm]{attenuation_length.eps}\\
+	\xiaowu\song 图~5\begin{minipage}[t]{75mm} \quad 单元条一端测得的光输出量与击中位置的关系。横轴为以单元条中心为零点的击中位置坐标，纵轴为相对于单元条中心归一化的光输出量。\\[-1mm]\wuhao
+	\end{minipage}
+\end{center}
 
 \section{输出信号动态范围的估算}
 PSD探测单元模块的输出信号大小取决于入射离子种类、沉积能量大小和单元条的击中位置(衰减长度)。
@@ -233,9 +239,7 @@ Z=20的相对论重离子垂直穿过单元条中心位置时，dy5通道的响应中心值为2940道。
 以此为基础，可以估算出PSD探测单元模块dy5通道的最大输出信号幅度为$2940\times1.64\times2.0\times\ 1.15=11090$道。
 其中，1.64是光衰减效应的体现；2.0来自DAMPE的最大张角，此时入射粒子迳迹的角度为60\degree，因此穿过的物质厚度是垂直入射时的两倍；
 1.15来自能量涨落，假设单元条对Z=20的入射离子的能量分辨率为10\%，且使用$3\sigma$的覆盖范围，则最大涨落的能损值是中心值的1.15倍。
-
-PSD前端电子学模块使用专用ASIC芯片VA160进行电荷测量，并结合14位的ADC进行模数转换\cite{fee}。
-根据测试，该模块的线性范围为$0\sim12000$道。
+PSD前端电子学模块的量程为16384道，测试得到其有效线性范围为$0\sim12000$道\cite{fee}。
 因此，上面估算出的信号动态范围在其线性范围内，满足PSD的设计要求。
 
 \section{总结}
@@ -257,6 +261,11 @@ Eljen Technology. EJ-200 Datasheet\,[EB/OL]. [2016-01-15]. {http://www.eljentech
 Hamamatsu Photonics K K. R4443 Datasheet\,[EB/OL]. [2016-01-15]. http://hamamatsu.com/
 \bibitem{btv}
 TARLE G, AHLEN S P, CARTWRIGHT B G. Cosmic ray isotope abundances from chromium to nickel. The astrophysical Journal, 1979, \textbf{230}:607-620.
+\bibitem{va160}
+{IDEAS} {\textbar} {Integrated} {Detector} {Electronics} {AS}. [2016-01-15]. http://www.ideas.no/products/ide3160-2
+\bibitem{fee}
+YANG Haibo. Signals Reading Method and Circuit Design for Multiple Detection Unit Based on the Advanced ASIC Chips. The University of Chinese Academy of Sciences, 2014. (in Chinese)
+(杨海波.\ 基于先进ASIC芯片的多探测单元信号读出方法与电路设计.\ 中国科学院大学, 2014.)
 \bibitem{lise}
 TARASOV O B, BAZIN D. LISE++: Radioactive beam production with in-flight separators. Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms,2008, \textbf{266(19)}:4657-4664.
 \bibitem{pdg}
@@ -267,9 +276,7 @@ MARROCCHESI P S, ADRIANI O, AKAIKE Y, \emph{et al}. Beam test performance of a s
 DWYER R, ZHOU Dazhuang. Plastic scintillator response to relativistic nuclei, Z≤ 28. Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment, 1985, \textbf{242(1)}:171-176.
 \bibitem{birks}
 BIRKS J B. The {Theory} and {Practice} of {Scintillation} {Counting}. Elsevier, 2014.
-\bibitem{fee}
-YANG Haibo. Signals Reading Method and Circuit Design for Multiple Detection Unit Based on the Advanced ASIC Chips. The University of Chinese Academy of Sciences, 2014. (in Chinese)
-(杨海波.\ 基于先进ASIC芯片的多探测单元信号读出方法与电路设计.\ 中国科学院大学, 2014.)
+
 
 \end{thebibliography}
 
