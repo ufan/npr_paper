@@ -104,8 +104,9 @@ DAMPE-PSD探测单元模块大动态范围读出方案的实验验证\\[-5mm]}
 它的主要科学目标包括：通过测量高能电子和$\gamma$射线的能谱和空间分布间接寻找和研究暗物质粒子，通过测量TeV以上的高能电子和TeV/u的重离子能谱研究宇宙线的起源、传播和加速机制，以及$\gamma$射线天文学研究。
 塑闪阵列探测器(Plastic Scintillator Detector，PSD)是DAMPE的一个关键探测器，主要承担高能$e/\gamma$粒子的鉴别以及对$Z=1\sim20$的宇宙线重离子的电荷测量。
 
-PSD是一个由82个探测单元模块组成的平面阵列探测器，其有效探测面积为$820mm\times820mm$。
-每个探测单元模块由一根$884mm\times28mm\times10mm$的塑料闪烁体单元条(Eljen EJ-200)和耦合在单元条两端的两支光电倍增管(Hamamatsu R4443)组成。
+PSD由X，Y两个相互垂直的探测阵列平面组成，其有效探测面积为$820mm\times820mm$。
+每个探测阵列平面内有41个探测单元模块，且相邻探测单元间交叠排布以消除探测死区。
+探测单元模块由一根$884mm\times28mm\times10mm$的塑料闪烁体单元条(Eljen EJ-200)和耦合在单元条两端的两支光电倍增管(Hamamatsu R4443)组成。
 带电粒子在塑闪单元条中的沉积能量首先转化为光信号。光子在单元条中经过反射、折射和衰减，最终被两端的光电倍增管收集并转化为电信号进行后续处理。
 
 相对论能区($\beta\gamma=1\sim1000$)的带电粒子和重离子在$10mm$塑闪材料中的能量沉积主要来自电离能损，其大小近似正比于$Z^2$。
@@ -160,7 +161,12 @@ RIBLL2束线上同时装配有一组塑闪飞行时间探测器和一个硅片能损探测器，可以使用TOF-$\
 表~1列出了LISE\cite{lise}计算得到的不同重离子在10mm塑闪材料中的沉积能量，其中$\Delta$$E_{exp}$表示本次实验使用的次级束离子，$\Delta$$E_{mip}$表示对应的$\beta\gamma=3$的MIP重离子(Minimum Ionizing Particle，最小电离粒子)。
 由于相对论重离子的电离能损与速度的关联性较小\cite{pdg}，后面的分析中使用MIP重离子来代表相对论能区的能量响应。
 对于同一种重离子来说，在沉积能量相差不大的条件下，其在塑闪中的光产额近似与沉积能量大小成正比。
-据此，可以推得PSD探测单元条模块对相对论重离子的能量响应中心值为$L\frac{\Delta E_{mip}}{\Delta E_{exp}}$。
+据此，可以推得PSD探测单元条模块对相对论重离子的能量响应中心值$L_{mip}$
+\begin{equation}
+L_{mip}=L\frac{\Delta E_{mip}}{\Delta E_{exp}}
+\label{eq:correction}
+\end{equation}
+
 \end{multicols}
 \begin{center}
 	\bgliu
@@ -199,13 +205,14 @@ RIBLL2束线上同时装配有一组塑闪飞行时间探测器和一个硅片能损探测器，可以使用TOF-$\
 基于上述轻核区的实验结果，使用BTV(Birks-Tarle-Voltz)模型\cite{calet,zhou,btv}外推，可以得到PSD单元条在重核区的能量响应。
 BTV模型也被称为core-halo模型，该模型认为重离子在闪烁体中的光产额由距离入射迳迹较近的内核(core)和较远的晕(halo)两个区域构成。
 内核区域的能损密度高，猝灭效应影响大，其光产额与沉积能量的关系可以用Birks定律\cite{birks}描述；晕区域主要由少量高能$\delta$电子组成，能损密度低，其光产额与沉积能量大小成正比。
-公式(1)是BTV模型的参数化表示，
+公式(\ref{eq:btv})是BTV模型的参数化表示，
 \begin{equation}
-\frac{dL}{dx}=\dfrac{A(1-f_h)\alpha Z^2}{1 + B_S(1-f_h)\alpha Z^2} + Af_h\alpha Z^2 ~,
+\frac{dL}{dx}=\dfrac{A(1-f_h)\alpha Z^2}{1 + B_S(1-f_h)\alpha Z^2} + Af_h\alpha Z^2
+\label{eq:btv}
 \end{equation}
 其中$\frac{dL}{dx}$是单位路径的闪烁光输出，$f_h$是晕区域内沉积能量占总沉积能量的比例，$B_S$代表猝灭效应的强度，$A$是全局归一化参数，$Z$是入射离子的电荷数。
 $Z^2$项来自于相对论重离子的单位路径能损$\frac{dE}{dx}=\alpha Z^2$，对于塑闪材料来说，其中的$\alpha\approx 2MeVg^{-1}cm^2$。
-图~4是使用公式(1)对轻核区实验数据的拟合结果，其中横轴为电荷数Z，纵轴为dy5通道的ADC道数值。
+图~4是使用公式(\ref{eq:btv})对轻核区实验数据的拟合结果，其中横轴为电荷数$Z^2$，纵轴为使用公式(\ref{eq:correction})修正后的dy5通道ADC道数值。
 可以看到，数据点与理论模型符合得比较好。
 根据拟合结果，可以计算出当$Z=20$时，dy5通道的响应中心值为2940道。
 
